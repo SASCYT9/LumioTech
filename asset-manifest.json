@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/LumioTech/static/css/main.f676b8d7.css",
+    "main.js": "/LumioTech/static/js/main.a30c4702.js",
+    "static/js/453.1a81bde3.chunk.js": "/LumioTech/static/js/453.1a81bde3.chunk.js",
+    "index.html": "/LumioTech/index.html",
+    "main.f676b8d7.css.map": "/LumioTech/static/css/main.f676b8d7.css.map",
+    "main.a30c4702.js.map": "/LumioTech/static/js/main.a30c4702.js.map",
+    "453.1a81bde3.chunk.js.map": "/LumioTech/static/js/453.1a81bde3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f676b8d7.css",
+    "static/js/main.a30c4702.js"
+  ]
+}
