@@ -11,6 +11,7 @@ import LegalPage from './LegalPage';
 
 const LumioTech = () => {
   const [currentPage, setCurrentPage] = useState('home');
+  const [orderMode, setOrderMode] = useState('3d_model');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [stlFile, setStlFile] = useState(null);
   const [fileAnalysis, setFileAnalysis] = useState(null);
@@ -197,6 +198,8 @@ const LumioTech = () => {
                   setStlFile={setStlFile}
                   fileAnalysis={fileAnalysis}
                   setFileAnalysis={setFileAnalysis}
+                  orderMode={orderMode}
+                  setOrderMode={setOrderMode}
                   selectedMaterial={selectedMaterial}
                   setSelectedMaterial={setSelectedMaterial}
                   materialSelectionMode={materialSelectionMode}
