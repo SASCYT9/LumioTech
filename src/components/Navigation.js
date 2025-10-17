@@ -35,6 +35,32 @@ const Navigation = ({ currentPage, setCurrentPage, mobileMenuOpen, setMobileMenu
               )}
             </button>
             <button
+              onClick={() => setCurrentPage('gallery')}
+              className={`relative px-4 py-2 rounded-lg transition-all duration-300 ${
+                currentPage === 'gallery'
+                  ? 'text-cyan-600 bg-cyan-50 shadow-md'
+                  : 'text-gray-700 hover:text-cyan-600 hover:bg-gray-50'
+              }`}
+            >
+              Галерея
+              {currentPage === 'gallery' && (
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+              )}
+            </button>
+            <button
+              onClick={() => setCurrentPage('account')}
+              className={`relative px-4 py-2 rounded-lg transition-all duration-300 ${
+                currentPage === 'account'
+                  ? 'text-cyan-600 bg-cyan-50 shadow-md'
+                  : 'text-gray-700 hover:text-cyan-600 hover:bg-gray-50'
+              }`}
+            >
+              Особистий кабінет
+              {currentPage === 'account' && (
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+              )}
+            </button>
+            <button
               onClick={() => setCurrentPage('calculator')}
               className={`relative px-4 py-2 rounded-lg transition-all duration-300 ${
                 currentPage === 'calculator'
@@ -75,7 +101,7 @@ const Navigation = ({ currentPage, setCurrentPage, mobileMenuOpen, setMobileMenu
         {mobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur rounded-lg mt-2 shadow-lg">
-              {['home', 'calculator', 'contact'].map(page => (
+              {['home', 'gallery', 'calculator', 'contact', 'account'].map(page => (
                 <button
                   key={page}
                   onClick={() => { setCurrentPage(page); setMobileMenuOpen(false); }}
@@ -86,7 +112,9 @@ const Navigation = ({ currentPage, setCurrentPage, mobileMenuOpen, setMobileMenu
                   }`}
                 >
                   {page === 'home' ? '🏠 Головна' :
-                   page === 'calculator' ? '🤖 AI Калькулятор' : '📞 Контакти'}
+                   page === 'gallery' ? '🖼️ Галерея' :
+                   page === 'calculator' ? '🤖 AI Калькулятор' :
+                   page === 'contact' ? '📞 Контакти' : '👤 Особистий кабінет'}
                 </button>
               ))}
             </div>

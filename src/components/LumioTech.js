@@ -3,6 +3,8 @@ import Navigation from './Navigation';
 import HomePage from './HomePage';
 import CalculatorPage from './CalculatorPage';
 import ContactPage from './ContactPage';
+import PersonalAccountPage from './PersonalAccountPage';
+import GalleryPage from './GalleryPage';
 
 const LumioTech = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -10,6 +12,7 @@ const LumioTech = () => {
   const [stlFile, setStlFile] = useState(null);
   const [fileAnalysis, setFileAnalysis] = useState(null);
   const [selectedMaterial, setSelectedMaterial] = useState('PLA');
+  const [materialSelectionMode, setMaterialSelectionMode] = useState('manual');
   const [selectedQuality, setSelectedQuality] = useState('0.2');
   const [quantity, setQuantity] = useState(1);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -158,11 +161,11 @@ const LumioTech = () => {
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
-    if (file && file.name.toLowerCase().endsWith('.stl')) {
+    if (file && (file.name.toLowerCase().endsWith('.stl') || file.name.toLowerCase().endsWith('.step'))) {
       setStlFile(file);
       analyzeSTLFile(file);
     } else {
-      alert('Будь ласка, завантажте STL файл');
+      alert('Будь ласка, завантажте STL або STEP файл');
     }
   };
 
@@ -173,7 +176,7 @@ const LumioTech = () => {
   const handleDrop = (event) => {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
-    if (file && file.name.toLowerCase().endsWith('.stl')) {
+    if (file && (file.name.toLowerCase().endsWith('.stl') || file.name.toLowerCase().endsWith('.step'))) {
       setStlFile(file);
       analyzeSTLFile(file);
     }
@@ -193,6 +196,8 @@ const LumioTech = () => {
                   setFileAnalysis={setFileAnalysis}
                   selectedMaterial={selectedMaterial}
                   setSelectedMaterial={setSelectedMaterial}
+                  materialSelectionMode={materialSelectionMode}
+                  setMaterialSelectionMode={setMaterialSelectionMode}
                   selectedQuality={selectedQuality}
                   setSelectedQuality={setSelectedQuality}
                   quantity={quantity}
@@ -220,6 +225,10 @@ const LumioTech = () => {
                />;
       case 'contact':
         return <ContactPage />;
+      case 'gallery':
+        return <GalleryPage />;
+      case 'account':
+        return <PersonalAccountPage />;
       default:
         return <HomePage setCurrentPage={setCurrentPage} />;
     }
