@@ -1,7 +1,7 @@
 import React from 'react';
 import { User, ShoppingBag, Settings, MapPin } from 'lucide-react';
 
-const PersonalAccountPage = () => {
+const PersonalAccountPage = ({ setCurrentPage }) => {
   const user = {
     name: 'Ярослав Воділа',
     email: 'yarik.vodila@example.com',
@@ -102,7 +102,7 @@ const PersonalAccountPage = () => {
                     </div>
                     <div className="flex justify-between items-center">
                       <p className="text-lg font-bold text-gray-900">{order.total}</p>
-                      <button className="text-sm font-semibold text-cyan-600 hover:text-cyan-800">Детальніше</button>
+                      <button onClick={() => setCurrentPage('orderDetails')} className="text-sm font-semibold text-cyan-600 hover:text-cyan-800">Детальніше</button>
                     </div>
                   </div>
                 ))}

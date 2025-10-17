@@ -5,6 +5,9 @@ import CalculatorPage from './CalculatorPage';
 import ContactPage from './ContactPage';
 import PersonalAccountPage from './PersonalAccountPage';
 import GalleryPage from './GalleryPage';
+import OrderDetailsPage from './OrderDetailsPage';
+import Footer from './Footer';
+import LegalPage from './LegalPage';
 
 const LumioTech = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -228,21 +231,28 @@ const LumioTech = () => {
       case 'gallery':
         return <GalleryPage />;
       case 'account':
-        return <PersonalAccountPage />;
+        return <PersonalAccountPage setCurrentPage={setCurrentPage} />;
+      case 'orderDetails':
+        return <OrderDetailsPage setCurrentPage={setCurrentPage} />;
+      case 'legal':
+        return <LegalPage />;
       default:
         return <HomePage setCurrentPage={setCurrentPage} />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <Navigation
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
       />
-      {renderCurrentPage()}
+      <main className="flex-grow">
+        {renderCurrentPage()}
+      </main>
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 };
