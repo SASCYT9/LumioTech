@@ -3,12 +3,15 @@ import React, { useRef } from 'react';
 import {
   Upload, FileText, Palette, DollarSign, CheckCircle
 } from 'lucide-react';
+import OrderWithoutModelForm from './OrderWithoutModelForm';
 
 const CalculatorPage = ({
   stlFile,
   setStlFile,
   fileAnalysis,
   setFileAnalysis,
+  orderMode,
+  setOrderMode,
   selectedMaterial,
   setSelectedMaterial,
   materialSelectionMode,
@@ -58,8 +61,25 @@ const CalculatorPage = ({
             </span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Завантажте STL файл і отримайте професійний аналіз з AI рекомендаціями за секунди
+            Завантажте 3D-модель або замовте розрахунок за вашими кресленнями
           </p>
+
+          <div className="mt-8">
+            <div className="inline-flex bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-2 border border-gray-200/50">
+              <button
+                onClick={() => setOrderMode('3d_model')}
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${orderMode === '3d_model' ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md' : 'text-gray-600'}`}
+              >
+                Завантажити 3D-модель
+              </button>
+              <button
+                onClick={() => setOrderMode('from_scratch')}
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${orderMode === 'from_scratch' ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md' : 'text-gray-600'}`}
+              >
+                Замовити за кресленням/фото
+              </button>
+            </div>
+          </div>
 
           <div className="flex justify-center mt-8 space-x-4">
             <button
@@ -75,10 +95,11 @@ const CalculatorPage = ({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-          <div className="space-y-6">
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-8 border border-gray-200/50">
-              <h2 className="text-2xl font-bold mb-6 flex items-center">
+        {orderMode === '3d_model' ? (
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-8 border border-gray-200/50">
+                <h2 className="text-2xl font-bold mb-6 flex items-center">
                 <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center mr-4">
                   <Upload className="w-5 h-5 text-white" />
                 </div>
@@ -484,6 +505,11 @@ const CalculatorPage = ({
             )}
           </div>
         </div>
+        ) : (
+          <div className="max-w-3xl mx-auto">
+            <OrderWithoutModelForm />
+          </div>
+        )}
       </div>
     </div>
   );
