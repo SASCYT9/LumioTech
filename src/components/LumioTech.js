@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AuthProvider } from '../context/AuthContext';
 import Navigation from './Navigation';
 import HomePage from './HomePage';
 import CalculatorPage from './CalculatorPage';
@@ -8,6 +9,8 @@ import GalleryPage from './GalleryPage';
 import OrderDetailsPage from './OrderDetailsPage';
 import Footer from './Footer';
 import LegalPage from './LegalPage';
+import LoginPage from './LoginPage';
+import RegisterPage from './RegisterPage';
 
 const LumioTech = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -113,52 +116,69 @@ const LumioTech = () => {
 
   const calculatePrice = () => {
     if (!fileAnalysis) return null;
-    
+
     const material = materials[selectedMaterial];
     const quality = qualities[selectedQuality];
-    
+
+    // Розрахунок ваги матеріалу (об'єм в см³ * щільність * % заповнення)
     const adjustedVolume = fileAnalysis.volume * (infillDensity / 100);
-    const materialWeight = adjustedVolume * material.density;
-    const materialCost = materialWeight * material.price;
-    
-    const baseTime = fileAnalysis.volume * 0.5;
+    const materialWeight = adjustedVolume * material.density; // грами
+    const materialCost = materialWeight * material.price; // грн
+
+    // Розрахунок часу друку (години)
+    const baseTime = fileAnalysis.volume * 0.5; // базовий час
     const totalPrintTime = baseTime * quality.timeMultiplier * fileAnalysis.complexity.difficulty;
-    
+
+    // Вартість підтримок
     let supportCost = 0;
     if (fileAnalysis.complexity.supportRequired && supportSettings !== 'none') {
-      supportCost = materialCost * (fileAnalysis.complexity.supportAmount / 100) * 0.7;
+      const supportMaterialWeight = materialWeight * (fileAnalysis.complexity.supportAmount / 100);
+      supportCost = supportMaterialWeight * material.price * 0.7; // підтримки 70% від ціни матеріалу
     }
-    
-    const laborCost = totalPrintTime * 6;
-    const setupCost = 3;
-    
+
+    // Робота: 50 грн за годину друку
+    const laborCost = totalPrintTime * 50;
+
+    // Налаштування принтера
+    const setupCost = 100; // 100 грн за налаштування
+
+    // Постобробка
     const postProcessingCost = postProcessing.reduce((total, serviceId) => {
-      const servicePrices = { sanding: 8, painting: 15, assembly: 12, drilling: 5, packaging: 3 };
+      const servicePrices = {
+        sanding: 150,    // Шліфування
+        painting: 300,   // Фарбування
+        assembly: 200,   // Збірка
+        drilling: 100,   // Свердління
+        packaging: 50    // Упаковка
+      };
       return total + (servicePrices[serviceId] || 0);
     }, 0);
-    
+
+    // Базова вартість
     let baseCost = materialCost + supportCost + laborCost + setupCost + postProcessingCost;
-    
+
+    // Термінове замовлення +50%
     if (urgentOrder) {
       baseCost *= 1.5;
     }
-    
+
+    // Знижки за кількість
     const subtotal = baseCost * quantity;
-    const quantityDiscount = quantity >= 10 ? 0.15 : quantity >= 5 ? 0.10 : quantity >= 3 ? 0.05 : 0;
+    const quantityDiscount = quantity >= 10 ? 0.20 : quantity >= 5 ? 0.15 : quantity >= 3 ? 0.10 : 0;
     const discount = subtotal * quantityDiscount;
     const total = subtotal - discount;
-    
+
     return {
-      materialCost: materialCost.toFixed(2),
-      supportCost: supportCost.toFixed(2),
-      laborCost: laborCost.toFixed(2),
-      setupCost: setupCost.toFixed(2),
-      postProcessingCost: postProcessingCost.toFixed(2),
+      materialCost: Math.round(materialCost),
+      supportCost: Math.round(supportCost),
+      laborCost: Math.round(laborCost),
+      setupCost: Math.round(setupCost),
+      postProcessingCost: Math.round(postProcessingCost),
       printTime: totalPrintTime.toFixed(1),
       materialWeight: materialWeight.toFixed(1),
-      subtotal: subtotal.toFixed(2),
-      discount: discount.toFixed(2),
-      total: total.toFixed(2),
+      subtotal: Math.round(subtotal),
+      discount: Math.round(discount),
+      total: Math.round(total),
       quantityDiscount: (quantityDiscount * 100).toFixed(0)
     };
   };
@@ -235,6 +255,10 @@ const LumioTech = () => {
         return <GalleryPage />;
       case 'account':
         return <PersonalAccountPage setCurrentPage={setCurrentPage} />;
+      case 'login':
+        return <LoginPage setCurrentPage={setCurrentPage} />;
+      case 'register':
+        return <RegisterPage setCurrentPage={setCurrentPage} />;
       case 'orderDetails':
         return <OrderDetailsPage setCurrentPage={setCurrentPage} />;
       case 'legal':
@@ -245,18 +269,20 @@ const LumioTech = () => {
   };
 
   return (
-    <div className="min-h-screen bg-forge-darkest flex flex-col">
-      <Navigation
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        mobileMenuOpen={mobileMenuOpen}
-        setMobileMenuOpen={setMobileMenuOpen}
-      />
-      <main className="flex-grow">
-        {renderCurrentPage()}
-      </main>
-      <Footer setCurrentPage={setCurrentPage} />
-    </div>
+    <AuthProvider>
+      <div className="min-h-screen bg-forge-darkest flex flex-col">
+        <Navigation
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          mobileMenuOpen={mobileMenuOpen}
+          setMobileMenuOpen={setMobileMenuOpen}
+        />
+        <main className="flex-grow">
+          {renderCurrentPage()}
+        </main>
+        <Footer setCurrentPage={setCurrentPage} />
+      </div>
+    </AuthProvider>
   );
 };
 

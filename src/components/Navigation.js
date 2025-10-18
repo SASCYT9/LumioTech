@@ -1,6 +1,7 @@
 // This will be the Navigation component
 import React from 'react';
-import { Menu, X, Flame, User } from 'lucide-react';
+import { Menu, X, Flame, User, LogIn } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 // Sub-component for navigation links
 const NavLink = ({ page, currentPage, setCurrentPage, children }) => (
@@ -22,6 +23,8 @@ const NavLink = ({ page, currentPage, setCurrentPage, children }) => (
 );
 
 const Navigation = ({ currentPage, setCurrentPage, mobileMenuOpen, setMobileMenuOpen }) => {
+  const { user } = useAuth();
+
   const navItems = [
     { page: 'home', label: 'Головна' },
     { page: 'gallery', label: 'Галерея' },
@@ -57,13 +60,25 @@ const Navigation = ({ currentPage, setCurrentPage, mobileMenuOpen, setMobileMenu
             </div>
 
             <div className="flex items-center space-x-4">
-              <button
-                onClick={() => setCurrentPage('account')}
-                className="p-2 rounded-full text-gray-400 hover:bg-forge-metal hover:text-forge-orange transition-colors"
-                title="Особистий кабінет"
-              >
-                <User size={20} />
-              </button>
+              {user ? (
+                <button
+                  onClick={() => setCurrentPage('account')}
+                  className="flex items-center gap-2 p-2 px-3 rounded-full text-gray-300 hover:bg-forge-metal hover:text-forge-orange transition-colors"
+                  title="Особистий кабінет"
+                >
+                  <User size={20} />
+                  <span className="text-sm">{user.name}</span>
+                </button>
+              ) : (
+                <button
+                  onClick={() => setCurrentPage('login')}
+                  className="flex items-center gap-2 p-2 px-3 rounded-full text-gray-300 hover:bg-forge-metal hover:text-forge-orange transition-colors"
+                  title="Вхід"
+                >
+                  <LogIn size={20} />
+                  <span className="text-sm">Вхід</span>
+                </button>
+              )}
               <button
                 onClick={() => setCurrentPage('calculator')}
                 className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-forge-orange to-red-600 rounded-full shadow-forge-glow hover:shadow-forge-glow-lg hover:scale-105 transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-forge-orange"
@@ -93,7 +108,13 @@ const Navigation = ({ currentPage, setCurrentPage, mobileMenuOpen, setMobileMenu
         }`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-forge-dark">
-          {[...navItems, { page: 'account', label: 'Особистий кабінет' }, { page: 'calculator', label: 'Калькулятор' }].map(item => (
+          {[
+            ...navItems,
+            { page: 'calculator', label: 'Калькулятор' },
+            user
+              ? { page: 'account', label: `Кабінет (${user.name})` }
+              : { page: 'login', label: 'Вхід' }
+          ].map(item => (
             <button
               key={item.page}
               onClick={() => { setCurrentPage(item.page); setMobileMenuOpen(false); }}
