@@ -606,10 +606,16 @@ if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📱 Telegram Bot connected`);
-  if (!TELEGRAM_CHAT_ID) {
-    console.log('⚠️  УВАГА: TELEGRAM_CHAT_ID не встановлено! Додайте його в .env файл');
-  }
-});
+// Export app for Vercel
+module.exports = app;
+
+// Only start server if not in Vercel environment
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📱 Telegram Bot connected`);
+    if (!TELEGRAM_CHAT_ID) {
+      console.log('⚠️  УВАГА: TELEGRAM_CHAT_ID не встановлено! Додайте його в .env файл');
+    }
+  });
+}
