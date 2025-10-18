@@ -29,40 +29,40 @@ const LumioTech = () => {
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   const materials = {
-    PLA: { 
-      name: 'PLA', 
-      price: 0.035, 
-      density: 1.24, 
-      description: 'Біорозкладний, легкий в друку',
+    PLA: {
+      name: 'PLA',
+      price: 3.0, // 3 грн за грам
+      density: 1.24, // г/см³
+      description: 'Екологічний, легкий у друку',
       supportFactor: 1.0,
       minTemp: 190,
       maxTemp: 220,
       color: 'from-green-400 to-green-600'
     },
-    ABS: { 
-      name: 'ABS', 
-      price: 0.042, 
-      density: 1.04, 
+    ABS: {
+      name: 'ABS',
+      price: 3.5, // 3.5 грн за грам
+      density: 1.04,
       description: 'Міцний, термостійкий до 80°C',
       supportFactor: 1.2,
       minTemp: 220,
       maxTemp: 250,
       color: 'from-red-400 to-red-600'
     },
-    PETG: { 
-      name: 'PETG', 
-      price: 0.048, 
-      density: 1.27, 
+    PETG: {
+      name: 'PETG',
+      price: 4.0, // 4 грн за грам
+      density: 1.27,
       description: 'Прозорий, хімічно стійкий',
       supportFactor: 1.1,
       minTemp: 230,
       maxTemp: 250,
       color: 'from-blue-400 to-blue-600'
     },
-    TPU: { 
-      name: 'TPU', 
-      price: 0.065, 
-      density: 1.20, 
+    TPU: {
+      name: 'TPU',
+      price: 6.0, // 6 грн за грам (гнучкий дорожчий)
+      density: 1.20,
       description: 'Гнучкий, еластичний',
       supportFactor: 1.8,
       minTemp: 210,

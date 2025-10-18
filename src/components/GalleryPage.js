@@ -2,13 +2,49 @@ import React from 'react';
 import { Camera } from 'lucide-react';
 
 const GalleryPage = () => {
+  // ЯК ДОДАТИ СВОЇ ФОТО:
+  // 1. Покладіть фото в папку: public/images/gallery/
+  // 2. Назвіть файли: photo1.jpg, photo2.jpg, photo3.jpg і т.д.
+  // 3. Змініть src нижче на: '/images/gallery/photo1.jpg'
+  // 4. Змініть title та description на ваші
+
   const galleryItems = [
-    { id: 1, src: 'https://placeimg.com/640/480/tech', title: 'Прототип корпусу', description: 'Матеріал: PLA, Шар: 0.15мм' },
-    { id: 2, src: 'https://placeimg.com/640/480/tech/grayscale', title: 'Механічна шестерня', description: 'Матеріал: ABS, Шар: 0.1мм' },
-    { id: 3, src: 'https://placeimg.com/640/480/people', title: 'Фігурка персонажа', description: 'Матеріал: PETG, Шар: 0.1мм' },
-    { id: 4, src: 'https://placeimg.com/640/480/animals', title: 'Гнучкий браслет', description: 'Матеріал: TPU, Шар: 0.2мм' },
-    { id: 5, src: 'https://placeimg.com/640/480/architecture', title: 'Архітектурний макет', description: 'Матеріал: PLA, Шар: 0.2мм' },
-    { id: 6, src: 'https://placeimg.com/640/480/nature', title: 'Захисний кожух', description: 'Матеріал: PETG, Шар: 0.25мм' },
+    {
+      id: 1,
+      src: 'https://placeimg.com/640/480/tech', // Замініть на: '/images/gallery/photo1.jpg'
+      title: 'Прототип корпусу', // Змініть назву
+      description: 'Матеріал: PLA, Шар: 0.15мм' // Змініть опис
+    },
+    {
+      id: 2,
+      src: 'https://placeimg.com/640/480/tech/grayscale', // Замініть на: '/images/gallery/photo2.jpg'
+      title: 'Механічна шестерня',
+      description: 'Матеріал: ABS, Шар: 0.1мм'
+    },
+    {
+      id: 3,
+      src: 'https://placeimg.com/640/480/people', // Замініть на: '/images/gallery/photo3.jpg'
+      title: 'Фігурка персонажа',
+      description: 'Матеріал: PETG, Шар: 0.1мм'
+    },
+    {
+      id: 4,
+      src: 'https://placeimg.com/640/480/animals', // Замініть на: '/images/gallery/photo4.jpg'
+      title: 'Гнучкий браслет',
+      description: 'Матеріал: TPU, Шар: 0.2мм'
+    },
+    {
+      id: 5,
+      src: 'https://placeimg.com/640/480/architecture', // Замініть на: '/images/gallery/photo5.jpg'
+      title: 'Архітектурний макет',
+      description: 'Матеріал: PLA, Шар: 0.2мм'
+    },
+    {
+      id: 6,
+      src: 'https://placeimg.com/640/480/nature', // Замініть на: '/images/gallery/photo6.jpg'
+      title: 'Захисний кожух',
+      description: 'Матеріал: PETG, Шар: 0.25мм'
+    },
   ];
 
   return (

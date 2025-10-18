@@ -9,40 +9,40 @@ const HomePage = ({ setCurrentPage }) => {
   const services = [
     {
       title: 'Прототипування',
-      description: 'Швидке виготовлення прототипів для тестування ідей',
+      description: 'Швидке створення прототипів для перевірки ваших ідей',
       icon: <Zap className="w-8 h-8" />,
-      price: 'від $5',
-      features: ['Швидкий оборот', 'Точність ±0.1мм', 'Консультації'],
+      price: 'від 150 грн',
+      features: ['Готово за 1-3 дні', 'Точність ±0.1мм', 'Безкоштовна консультація'],
       gradient: 'from-forge-orange to-forge-orange-glow',
       iconBg: 'bg-forge-metal',
       iconColor: 'text-forge-orange'
     },
     {
       title: 'Серійне виробництво',
-      description: 'Виготовлення серій від 10 до 1000+ деталей',
+      description: 'Виготовлення партій від 10 до 1000+ деталей',
       icon: <Package className="w-8 h-8" />,
-      price: 'від $3/шт',
-      features: ['Знижки від 20%', 'Контроль якості', 'Швидка доставка'],
+      price: 'від 100 грн/шт',
+      features: ['Знижки до 30%', 'Гарантія якості', 'Доставка по Україні'],
       gradient: 'from-forge-orange to-red-600',
       iconBg: 'bg-forge-metal',
       iconColor: 'text-forge-orange'
     },
     {
       title: 'Складні моделі',
-      description: 'Деталі з підпорками, внутрішніми порожнинами',
+      description: 'Деталі з підтримками та внутрішніми каналами',
       icon: <Layers className="w-8 h-8" />,
-      price: 'від $8',
-      features: ['Розчинні підпорки', 'Обробка поверхні', 'Контроль геометрії'],
+      price: 'від 250 грн',
+      features: ['Розчинні підтримки', 'Постобробка', 'Перевірка геометрії'],
       gradient: 'from-forge-orange to-yellow-500',
       iconBg: 'bg-forge-metal',
       iconColor: 'text-forge-orange'
     },
     {
-      title: 'Спецматеріали',
-      description: 'Друк з карбону, металу, дерева, гнучких матеріалів',
+      title: 'Преміум матеріали',
+      description: 'Друк з карбону, нейлону, TPU та інших спецматеріалів',
       icon: <Shield className="w-8 h-8" />,
-      price: 'від $12',
-      features: ['Унікальні властивості', 'Професійна якість', 'Сертифікати'],
+      price: 'від 400 грн',
+      features: ['Унікальні властивості', 'Професійна якість', 'Технічна підтримка'],
       gradient: 'from-orange-600 to-forge-orange',
       iconBg: 'bg-forge-metal',
       iconColor: 'text-forge-orange'
@@ -71,19 +71,15 @@ const HomePage = ({ setCurrentPage }) => {
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               <span className="block bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100 bg-clip-text text-transparent">
-                Кузня
-              </span>
-              <span className="block bg-gradient-to-r from-forge-orange via-forge-orange-glow to-forge-orange bg-clip-text text-transparent text-glow-orange">
-                Майбутнього
-              </span>
-              <span className="block bg-gradient-to-r from-gray-400 to-gray-200 bg-clip-text text-transparent text-2xl md:text-4xl font-normal mt-2">
                 LUMIO FORGE
+              </span>
+              <span className="block bg-gradient-to-r from-forge-orange via-forge-orange-glow to-forge-orange bg-clip-text text-transparent text-glow-orange text-3xl md:text-5xl mt-2">
+                Кузня Майбутнього
               </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
-              <span className="font-semibold text-forge-orange">Lumio Forge</span> - де технології зустрічаються з ремеслом.
-              Від ідеї до металевої реальності.
+              Де технології зустрічаються з ремеслом. Від ідеї до реальності.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
