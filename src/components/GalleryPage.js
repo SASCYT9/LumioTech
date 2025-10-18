@@ -12,29 +12,29 @@ const GalleryPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-forge-darkest via-forge-darker to-forge-dark py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-forge-orange to-forge-orange-glow bg-clip-text text-transparent">
               Галерея робіт
             </span>
           </h1>
-          <p className="text-xl text-gray-600">Приклади наших можливостей та якості друку</p>
+          <p className="text-xl text-gray-300">Приклади наших можливостей та якості друку</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {galleryItems.map(item => (
-            <div key={item.id} className="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+            <div key={item.id} className="group bg-forge-dark/80 backdrop-blur-sm rounded-2xl shadow-forge-glow overflow-hidden transform hover:scale-105 transition-all duration-300 metal-border hover:shadow-forge-glow-lg">
               <div className="relative">
                 <img src={item.src} alt={item.title} className="w-full h-64 object-cover" />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Camera className="w-12 h-12 text-white" />
+                <div className="absolute inset-0 bg-gradient-to-t from-forge-darkest via-forge-darkest/60 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Camera className="w-12 h-12 text-forge-orange" />
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
+              <div className="p-6 bg-forge-metal/50">
+                <h3 className="text-xl font-bold text-gray-100 mb-2 group-hover:text-forge-orange transition-colors">{item.title}</h3>
+                <p className="text-gray-400">{item.description}</p>
               </div>
             </div>
           ))}

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install axios express cors dotenv multer node-telegram-bot-api concurrently)",
+      "Bash(node server/getChatId.js)",
+      "Bash(npm run server)",
+      "Bash(timeout 3)",
+      "Bash(npm install mongoose bcryptjs jsonwebtoken)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
