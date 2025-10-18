@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, ShoppingBag, Settings, MapPin } from 'lucide-react';
+import { ShoppingBag, Settings, MapPin } from 'lucide-react';
 
 const PersonalAccountPage = ({ setCurrentPage }) => {
   const user = {
@@ -13,11 +13,6 @@ const PersonalAccountPage = ({ setCurrentPage }) => {
     { id: '#12344', date: '12.10.2025', total: '850.50 грн', status: 'Доставлено', items: ['Кріплення для камери.stl'] },
     { id: '#12342', date: '05.10.2025', total: '2300.00 грн', status: 'Доставлено', items: ['Шестерня редуктора.step', 'Захисний кожух.stl'] },
     { id: '#12341', date: '01.10.2025', total: '450.00 грн', status: 'Скасовано', items: ['Прототип ручки.stl'] }
-  ];
-
-  const addresses = [
-    { name: 'Дім', address: 'м. Київ, вул. Хрещатик, 22, кв. 5' },
-    { name: 'Робота', address: 'м. Київ, вул. Інститутська, 1, офіс 303' }
   ];
 
   const getStatusClass = (status) => {
@@ -57,19 +52,19 @@ const PersonalAccountPage = ({ setCurrentPage }) => {
               <h3 className="text-xl font-bold text-gray-900 mb-4">Навігація</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="#" className="flex items-center p-3 rounded-lg text-gray-700 bg-cyan-50 font-semibold border-l-4 border-cyan-500">
+                  <a href="#!" className="flex items-center p-3 rounded-lg text-gray-700 bg-cyan-50 font-semibold border-l-4 border-cyan-500">
                     <ShoppingBag className="w-5 h-5 mr-3 text-cyan-600" />
                     Історія замовлень
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-100">
+                  <a href="#!" className="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-100">
                     <Settings className="w-5 h-5 mr-3" />
                     Налаштування
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-100">
+                  <a href="#!" className="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-100">
                     <MapPin className="w-5 h-5 mr-3" />
                     Мої адреси
                   </a>

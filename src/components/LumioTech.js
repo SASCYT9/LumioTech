@@ -37,7 +37,7 @@ const LumioTech = () => {
       supportFactor: 1.0,
       minTemp: 190,
       maxTemp: 220,
-      color: 'from-green-400 to-green-600'
+      color: 'from-blue-200 to-blue-400'
     },
     ABS: { 
       name: 'ABS', 
@@ -47,7 +47,7 @@ const LumioTech = () => {
       supportFactor: 1.2,
       minTemp: 220,
       maxTemp: 250,
-      color: 'from-red-400 to-red-600'
+      color: 'from-gray-400 to-gray-600'
     },
     PETG: { 
       name: 'PETG', 
@@ -57,7 +57,7 @@ const LumioTech = () => {
       supportFactor: 1.1,
       minTemp: 230,
       maxTemp: 250,
-      color: 'from-blue-400 to-blue-600'
+      color: 'from-cyan-200 to-cyan-400'
     },
     TPU: { 
       name: 'TPU', 
@@ -67,7 +67,7 @@ const LumioTech = () => {
       supportFactor: 1.8,
       minTemp: 210,
       maxTemp: 230,
-      color: 'from-purple-400 to-purple-600'
+      color: 'from-indigo-300 to-indigo-500'
     }
   };
 
@@ -245,7 +245,7 @@ const LumioTech = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-brand-light flex flex-col">
       <Navigation
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, Circle, Loader, FileText, DollarSign, Package, UserCheck, Truck } from 'lucide-react';
+import { CheckCircle, Loader, FileText, DollarSign, UserCheck, Truck } from 'lucide-react';
 
 const OrderDetailsPage = ({ setCurrentPage }) => {
   const order = {
