@@ -53,10 +53,10 @@ const GalleryPage = () => {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-forge-orange to-forge-orange-glow bg-clip-text text-transparent">
-              Галерея робіт
+              Наша майстерність у деталях
             </span>
           </h1>
-          <p className="text-xl text-gray-300">Приклади наших можливостей та якості друку</p>
+          <p className="text-xl text-gray-300">Перегляньте приклади наших робіт та оцініть якість друку</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

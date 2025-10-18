@@ -143,12 +143,12 @@ const PersonalAccountPage = ({ setCurrentPage }) => {
               ) : orders.length === 0 ? (
                 <div className="text-center py-12">
                   <ShoppingBag className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-                  <p className="text-gray-400 text-lg">Ще немає замовлень</p>
+                  <p className="text-gray-400 text-lg">У вас ще немає замовлень</p>
                   <button
                     onClick={() => setCurrentPage('calculator')}
                     className="mt-4 px-6 py-3 bg-gradient-to-r from-forge-orange to-red-600 text-white rounded-xl font-semibold shadow-forge-glow hover:shadow-forge-glow-lg transition-all transform hover:scale-105"
                   >
-                    Створити замовлення
+                    Розрахувати вартість
                   </button>
                 </div>
               ) : (
@@ -157,7 +157,7 @@ const PersonalAccountPage = ({ setCurrentPage }) => {
                     <div key={order._id} className="bg-forge-metal/50 rounded-2xl shadow-inner-forge p-6 border border-forge-steel hover:shadow-forge-glow transition-all">
                       <div className="flex justify-between items-start mb-4">
                         <div>
-                          <p className="font-bold text-lg text-gray-100">#{order._id.slice(-8)}</p>
+                          <p className="font-bold text-lg text-gray-100">Замовлення #{order._id.slice(-8)}</p>
                           <p className="text-sm text-gray-400">{formatDate(order.createdAt)}</p>
                         </div>
                         <span className={`px-3 py-1 text-sm font-semibold rounded-full ${getStatusClass(order.status)}`}>

@@ -42,15 +42,15 @@ const ContactPage = () => {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-forge-orange via-forge-orange-glow to-forge-orange bg-clip-text text-transparent text-glow-orange">
-              Зв'яжіться з нами
+              Наші контакти
             </span>
           </h1>
-          <p className="text-xl text-gray-400">Готові викувати ваші ідеї в реальність</p>
+          <p className="text-xl text-gray-400">Готові втілити ваші ідеї в реальність</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
           <div className="bg-forge-dark/80 backdrop-blur-sm rounded-3xl shadow-inner-forge p-8 metal-border">
-            <h2 className="text-2xl font-bold text-gray-100 mb-6">Написати нам</h2>
+            <h2 className="text-2xl font-bold text-gray-100 mb-6">Напишіть нам</h2>
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
@@ -155,27 +155,31 @@ const ContactPage = () => {
             </div>
 
             <div className="bg-forge-dark/80 backdrop-blur-sm rounded-3xl shadow-inner-forge p-8 metal-border">
-              <h2 className="text-2xl font-bold text-gray-100 mb-6">Соціальні мережі</h2>
+              <h2 className="text-2xl font-bold text-gray-100 mb-6">Ми в соцмережах</h2>
               <div className="space-y-4">
                 <a
                   href="https://t.me/lumiotech_ua"
-                  className="flex items-center p-4 border border-gray-200 rounded-2xl hover:bg-cyan-50 hover:border-cyan-300 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center p-4 border border-forge-steel rounded-2xl hover:bg-forge-metal hover:border-cyan-400 transition-colors group"
                 >
-                  <MessageCircle className="w-6 h-6 text-cyan-500 mr-4" />
+                  <MessageCircle className="w-6 h-6 text-cyan-400 mr-4 group-hover:text-cyan-300 transition-colors" />
                   <div>
-                    <h3 className="font-semibold text-gray-900">Telegram</h3>
-                    <p className="text-gray-600 text-sm">@lumiotech_ua - швидкі консультації</p>
+                    <h3 className="font-semibold text-gray-200 group-hover:text-white transition-colors">Telegram</h3>
+                    <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">@lumiotech_ua - швидкі консультації та новини</p>
                   </div>
                 </a>
 
                 <a
                   href="https://instagram.com/lumiotech_ukraine"
-                  className="flex items-center p-4 border border-gray-200 rounded-2xl hover:bg-pink-50 hover:border-pink-300 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center p-4 border border-forge-steel rounded-2xl hover:bg-forge-metal hover:border-pink-400 transition-colors group"
                 >
-                  <Instagram className="w-6 h-6 text-pink-500 mr-4" />
+                  <Instagram className="w-6 h-6 text-pink-400 mr-4 group-hover:text-pink-300 transition-colors" />
                   <div>
-                    <h3 className="font-semibold text-gray-900">Instagram</h3>
-                    <p className="text-gray-600 text-sm">@lumiotech_ukraine - наші роботи</p>
+                    <h3 className="font-semibold text-gray-200 group-hover:text-white transition-colors">Instagram</h3>
+                    <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">@lumiotech_ukraine - фото наших робіт</p>
                   </div>
                 </a>
               </div>
